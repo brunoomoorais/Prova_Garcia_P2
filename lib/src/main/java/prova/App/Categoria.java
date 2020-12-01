@@ -1,4 +1,4 @@
-package prova.produtos.model;
+package prova.App;
 
 public class Categoria {
 	private int Id;

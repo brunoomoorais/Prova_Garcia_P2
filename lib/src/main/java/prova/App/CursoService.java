@@ -1,14 +1,14 @@
-package prova.produtos.model;
+package prova.App;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProdutoService {
+public class CursoService {
 	@Autowired
-	ProdutoDAO prodDao;
+	CursoDAO prodDao;
 	
-	public void insert(Produto prod) {
+	public void insert(Curso prod) {
 		prodDao.insert(prod);
 	}
 }

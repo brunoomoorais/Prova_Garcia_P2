@@ -1,0 +1,19 @@
+server:
+   port : 8080
+
+spring:
+    datasource:
+        platform: postgres
+        url: jdbc:postgresql://ec2-54-172-219-218.compute-1.amazonaws.com:5432/d313jtikkafip3
+        username: icvpqtvktrzgrk
+        password: b15742e921db82c34731b6c75265c37750393601d5f35ab9864ebc3203950d92
+        driverClassName: org.postgresql.Driver
+        initialization-mode: always
+        initialize: true
+        schema: classpath:/schema.sql
+
+ 
+
+    jpa: 
+        hibernate:
+            ddl-auto: create-drop

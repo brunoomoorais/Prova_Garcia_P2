@@ -1,4 +1,4 @@
-package prova.produtos.model;
+package prova.App;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ProdutoDAO extends JdbcDaoSupport{
+public class CategoriaDAO extends JdbcDaoSupport{
 		@Autowired
 		DataSource dataSource;
 		
@@ -17,11 +17,17 @@ public class ProdutoDAO extends JdbcDaoSupport{
 			setDataSource(dataSource);
 		}
 		
-		public void insert(Produto prod) {
-			String sql = "INSERT INTO produto (id, nome, categoria, marca, valor)" +
-						 "VALUES (?, ?, ?, ?, ?)";
+		public void insert(Categoria cat) {
+			String sql = "do $$"
+						+"  declare"
+						+"    categoriaId integer := (select MAX(id) + 1 from categoria);"
+						+"begin"
+						+"    insert into categoria(id, nome)"
+						+"        values (categoriaId, ?);"
+						+"    Raise Notice '%', categoriaId;"
+						+"end $$;";
 			getJdbcTemplate().update(sql, new Object[] {
-					prod.getId(), prod.getNome(), prod.getCategoria(), prod.getMarca(), prod.getValor()
+					cat.getNome()
 			});
 		}
 }
