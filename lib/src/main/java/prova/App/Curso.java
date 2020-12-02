@@ -10,6 +10,20 @@ public class Curso {
 	private double ValorDesconto;
 	private int Desconto;
 	
+	public Curso() {
+		
+	}
+	
+	public Curso(String nome, String desc, Categoria categoria, double valor, double valorDesc, int desconto)
+	{
+		this.Nome = nome;
+		this.Descricao = desc;
+		this.Categoria = categoria;
+		this.ValorAtual = valor;
+		this.ValorDesconto = valorDesc;
+		this.Desconto = desconto;		
+	}
+	
 	public Curso(int id, String nome, String desc, Categoria categoria, double valor, double valorDesc, int desconto)
 	{
 		this.Id = id;

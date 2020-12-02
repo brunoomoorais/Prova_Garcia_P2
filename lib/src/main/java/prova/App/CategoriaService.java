@@ -15,11 +15,11 @@ public class CategoriaService {
 		catDao.insert(cat);
 	}
 	
-	public Map<String, Object> getCategoria(int id){
+	public Map<String, Object> getId(int id){
 		return catDao.getCategoria(id);
 	}
 	
-	public List<Map<String, Object>> getCategorias(){
+	public List<Map<String, Object>> getAll(){
 		return catDao.getCategorias();
 	}
 	

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CategoriaController 
@@ -39,7 +38,7 @@ public class CategoriaController
 	public String getCategoria(@PathVariable("id") int id, Model model)
 	{
 		CategoriaService catDao = context.getBean(CategoriaService.class);
-		Map<String, Object> categoria = catDao.getCategoria(id);
+		Map<String, Object> categoria = catDao.getId(id);
 		Categoria cat = new Categoria((int)categoria.get("id"), (String)categoria.get("nome"));
 		model.addAttribute("variavel_pagina", cat);
 		return "produtosSucesso";
@@ -49,7 +48,7 @@ public class CategoriaController
 	public String getCategorias(Model model)
 	{
 		CategoriaService catDao = context.getBean(CategoriaService.class);
-		List<Map<String, Object>> categorias = catDao.getCategorias();
+		List<Map<String, Object>> categorias = catDao.getAll();
 		model.addAttribute("variavel_pagina", categorias);
 		return "produtosSucesso";
 	}
@@ -58,7 +57,7 @@ public class CategoriaController
 	public String UpdateForm(@PathVariable("id") int id, Model model)
 	{
 		CategoriaService catDao = context.getBean(CategoriaService.class);
-		Map<String, Object> categoria = catDao.getCategoria(id);
+		Map<String, Object> categoria = catDao.getId(id);
 		Categoria cat = new Categoria((int)categoria.get("id"), (String)categoria.get("nome"));
 		model.addAttribute("variavel_pagina", cat);	
 		return "formAtt";
