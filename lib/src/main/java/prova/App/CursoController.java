@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
 @Controller
@@ -52,7 +53,7 @@ public class CursoController
 									(double)curso.get("valorDesconto"),
 									(int)curso.get("desconto")
 								);
-		model.addAttribute("variavel_pagina", ResultCurso);
+		model.addAttribute("curso", ResultCurso);
 		return "produtosSucesso";
 	}
 	
@@ -61,7 +62,19 @@ public class CursoController
 	{
 		CursoService cursoDao = context.getBean(CursoService.class);
 		List<Map<String, Object>> cursos = cursoDao.getAll();
-		model.addAttribute("variavel_pagina", cursos);
+		model.addAttribute("cursos", cursos);
+		return "produtosSucesso";
+	}
+	
+	@GetMapping("/cursos")
+	public String getCursosFilter(@RequestParam(name = "categoria", required = true, defaultValue = "-1") int categoria,
+								  @RequestParam(name = "valor", required = true, defaultValue = "-1") double valor,
+								  @RequestParam(name = "desconto", required = true, defaultValue = "-1") int desconto,
+								  Model model)
+	{
+		CursoService cursoDao = context.getBean(CursoService.class);
+		List<Map<String, Object>> cursos = cursoDao.getAllFiltered(categoria, valor, desconto);
+		model.addAttribute("cursos", cursos);
 		return "produtosSucesso";
 	}
 	
@@ -83,7 +96,7 @@ public class CursoController
 									(double)curso.get("valorDesconto"),
 									(int)curso.get("desconto")
 								);
-		model.addAttribute("variavel_pagina", ResultCurso);	
+		model.addAttribute("curso", ResultCurso);	
 		return "formAtt";
 	}
 		

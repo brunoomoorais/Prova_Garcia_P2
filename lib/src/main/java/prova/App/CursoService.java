@@ -23,6 +23,10 @@ public class CursoService {
 		return cDao.getCursos();
 	}
 	
+	public List<Map<String, Object>> getAllFiltered(int categoriaId, double valor, int desconto){
+		return cDao.getCursosFilter(categoriaId, valor, desconto);
+	}
+	
 	public void delete(int id) {
 		cDao.deleteCurso(id);
 	}
