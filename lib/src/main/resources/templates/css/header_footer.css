@@ -42,7 +42,7 @@ body {
 
 #parte_meio {
     background-color: rgb(108,99,255);
-    height: 100px;
+    padding-top: 2px;
 }
 
 .centralizar {
@@ -56,14 +56,14 @@ body {
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover;  
-    width: 12rem;
-    min-width: 12rem;
-    max-width: 12rem;
-    height: 6.3rem;
-    min-height: 6.3rem;
-    max-height: 6.3rem;
+    width: 10rem;
+    min-width: 10rem;
+    max-width: 10rem;
+    height: 4.3rem;
+    min-height: 4.3rem;
+    max-height: 4.3rem;
     float: left;
-    margin: 0 9rem 0 3rem;
+    margin: 1px 9rem 0 3rem;
 }
 
 #barra_pesquisa {
@@ -91,40 +91,6 @@ textarea:focus, input:focus, select:focus {
     box-shadow: 0 0 0 0;
     border: 0 none;
     outline: 0;
-} 
-
-#parte_menu {
-    min-width: 930px;
-    max-width: 1250px;
-    margin: auto;
-    padding: 12px 0;
-}
-
-#menu {
-    list-style: none;
-    float: left;
-}
-
-#menu li {
-    position: relative;
-    float: left;
-}
-
-#menu li a {
-    color:rgb(182, 182, 182); 
-    text-decoration: none; 
-    padding: 10px 25px; 
-    display: block;
-    font-weight: 600;
-    font-size: 15px;
-}
-
-#menu li ul{
-    position: absolute;
-    top: 25px;
-    left: 0;
-    background-color:#fff;
-    display: none;
 }
 
 #parte_azul {
@@ -194,9 +160,9 @@ textarea:focus, input:focus, select:focus {
 }
 
 .final img {
-    width: 110px;
-    height: 60px;
-    margin-top: 5px;
+    width: 106px;
+    height: 58px;
+    margin-top: 10px;
 }
 
 .clear {
