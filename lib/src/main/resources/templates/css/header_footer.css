@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#parte_acessibilidade {
+    width: 100%;
+    background-color: rgb(47,46,65);
+}
+
+#parte_acessibilidade .centralizar {
+    max-width: 1200px;
+}
+
+#opcoes {
+    float: left;
+    padding: 13px 0 9px 0;
+}
+
+#opcoes p {
+    float: left;
+    padding-right: 15px;
+    color: white;
+    font-size: 12px;
+}
+
+#mapa {
+    float: right;
+    padding: 11px 0 9px 0;
+}
+
+#mapa p {
+    color: white;
+    font-size: 14px;
+    float: left;
+}
+
+#parte_meio {
+    background-color: rgb(108,99,255);
+    height: 100px;
+}
+
+.centralizar {
+    margin: auto;
+    min-width: 930px;
+    max-width: 1306px;
+}
+
+#logo {
+    background-image: url("../images/logo/logo1.png");
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;  
+    width: 12rem;
+    min-width: 12rem;
+    max-width: 12rem;
+    height: 6.3rem;
+    min-height: 6.3rem;
+    max-height: 6.3rem;
+    float: left;
+    margin: 0 9rem 0 3rem;
+}
+
+#barra_pesquisa {
+    background-color:white;
+    width: 880px;
+    float: left;
+    margin-top: 25px;
+}
+  
+#txtBusca {
+    float: left;
+    background-color: transparent;
+    padding-left: 10px;
+    font-size: 13px;
+    border: none;
+    height: 48px;
+    width: 94%;
+}
+
+#btnBusca {
+    margin: 12px 5px 0 0;
+}
+
+textarea:focus, input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+} 
+
+#parte_menu {
+    min-width: 930px;
+    max-width: 1250px;
+    margin: auto;
+    padding: 12px 0;
+}
+
+#menu {
+    list-style: none;
+    float: left;
+}
+
+#menu li {
+    position: relative;
+    float: left;
+}
+
+#menu li a {
+    color:rgb(182, 182, 182); 
+    text-decoration: none; 
+    padding: 10px 25px; 
+    display: block;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+#menu li ul{
+    position: absolute;
+    top: 25px;
+    left: 0;
+    background-color:#fff;
+    display: none;
+}
+
+#parte_azul {
+    height: 30px;
+    width: 100%;
+    background-color: rgb(108,99,255);
+    padding-top: 15px;
+}
+
+#parte_branca {
+    height: 10px;
+    width: 100%;
+    background-color: white;
+}
+
+#parte_superior {
+    min-width: 930px;
+    max-width: 1350px;
+    margin: 30px auto;
+    padding: 0 30px;
+}
+
+.informacoes {
+    float: left;
+    width: 20rem;
+}
+
+.informacoes h4 {
+    color: rgb(108,99,255);
+    padding-bottom: 5px;
+    font-size: 15px;
+}
+
+.informacoes p {
+    padding-top: 5px;
+    font-size: 14px;
+    color: rgb(108,99,255);
+}
+
+#redes_sociais {
+    float: left;
+    width: 20rem;
+    height: 100px;
+}
+
+#redes_sociais img {
+    float: right;
+    width: 32px;
+    height: 32px;
+    margin-left: 10px;
+}
+
+#parte_inferior {
+    background-color: rgb(47,46,65);
+    color: white;
+}
+
+.final {
+    width: 33.33%;
+    float: left;
+    text-align: center;
+}
+
+.final p {
+    margin-top: 28px;
+    font-size: 15px;
+}
+
+.final img {
+    width: 110px;
+    height: 60px;
+    margin-top: 5px;
+}
+
+.clear {
+    clear: both;
+}
+
+a {
+    text-decoration: none;
+    color:inherit;
+}
+
+button {
+    outline: none;
+    box-shadow: none;
+}
