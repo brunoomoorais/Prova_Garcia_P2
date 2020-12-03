@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Categoria</title>
-    <link rel="stylesheet" type="text/css" href="css/adicionar.css"/>
+    <title>Visualizar Categorias</title>
+    <link rel="stylesheet" type="text/css" href="css/style_admin.css"/>
     <link rel="stylesheet" type="text/css" href="css/header_footer.css"/>
     <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css"/>
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css"/>
-    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css"/>
-    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css"/>
-    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"/>	
-    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css"/>
+
+    <style>
+        .produtos {
+            padding: 8px 0 13px 0;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -67,7 +66,7 @@
                 <div class="img">
                     <img src="images/icons/add-24.png">
                 </div>
-                <a href="adicionar_categoria.html">Adicionar Categoria</a>
+                <a href="adicionar_categoria.html">Adicionar Categorias</a>
 
                 <div class="clear"></div>
             </div>
@@ -80,27 +79,47 @@
 
                 <div class="clear"></div>
             </div>
-
-            <div class="clear"></div>
         </div>
 
-        <div id="adicionar">
-            <div id="informacao2">
-                <form class="login100-form validate-form">
-                    <div class="wrap-input100 validate-input">
-                        <input class="input100" type="text" name="nome">
-                        <span class="focus-input100" data-placeholder="Nome"></span>
-                    </div>
-
-                    <div class="clear"></div>
-                    <button>ADICIONAR</button>
-                </form>
+        <div id="cursos">
+            <div class="produtos">
+                <div class="informacoes_produto">
+                    <h2>HALTER SEXTAVADO 2KG</h2>
+                    <button>EDITAR</button>
+                    <button>EXCLUIR</button>
+                </div>
             </div>
+
+            <div class="produtos">
+                <div class="informacoes_produto">
+                    <h2>HALTER SEXTAVADO 2KG</h2>
+                    <button>EDITAR</button>
+                    <button>EXCLUIR</button>
+                </div>
+            </div>
+
+            <div class="produtos">
+                <div class="informacoes_produto">
+                    <h2>HALTER SEXTAVADO 2KG</h2>
+                    <button>EDITAR</button>
+                    <button>EXCLUIR</button>
+                </div>
+            </div>
+
+            <div class="produtos">
+                <div class="informacoes_produto">
+                    <h2>HALTER SEXTAVADO 2KG</h2>
+                    <button>EDITAR</button>
+                    <button>EXCLUIR</button>
+                </div>
+            </div>
+
+            <div class="clear"></div>
         </div>
     </div>
 
     <div class="clear"></div>
-    
+
     <footer>
         <div id="parte_azul">
             <div id="parte_branca"></div>
@@ -122,24 +141,5 @@
             <div class="clear"></div>
         </div>
     </footer>
-
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="vendor/animsition/js/animsition.min.js"></script>
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/select2/select2.min.js"></script>
-    <script src="vendor/daterangepicker/moment.min.js"></script>
-    <script src="vendor/daterangepicker/daterangepicker.js"></script>
-    <script src="vendor/countdowntime/countdowntime.js"></script>
-    <script src="js/main.js"></script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-    <script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-23581568-13');
-	</script>
 </body>
 </html>

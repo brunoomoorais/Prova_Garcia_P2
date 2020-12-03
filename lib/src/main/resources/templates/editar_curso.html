@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Categoria</title>
+    <title>Editar Curso</title>
     <link rel="stylesheet" type="text/css" href="css/adicionar.css"/>
     <link rel="stylesheet" type="text/css" href="css/header_footer.css"/>
     <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -67,7 +67,7 @@
                 <div class="img">
                     <img src="images/icons/add-24.png">
                 </div>
-                <a href="adicionar_categoria.html">Adicionar Categoria</a>
+                <a href="adicionar_categoria.html">Adicionar Categorias</a>
 
                 <div class="clear"></div>
             </div>
@@ -85,15 +85,43 @@
         </div>
 
         <div id="adicionar">
-            <div id="informacao2">
+            <div id="foto">
+
+            </div>
+
+            <div id="informacao">
                 <form class="login100-form validate-form">
-                    <div class="wrap-input100 validate-input">
+                    <div class="wrap-input50 validate-input">
                         <input class="input100" type="text" name="nome">
                         <span class="focus-input100" data-placeholder="Nome"></span>
                     </div>
+                    <div class="wrap-input50 validate-input" style="margin-left: 4%;">
+                        <select class="input100" name="drop" style="border: none;" data-placeholder="Categoria">
+                            <option value="categoria">Categoria</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="fiat">Fiat</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    </div>
 
                     <div class="clear"></div>
-                    <button>ADICIONAR</button>
+
+                    <div class="wrap-input100 validate-input">
+                        <textarea class="input100" style="padding-top: 10px; height: 100px;" name="desc"></textarea>
+                        <span class="focus-input100" data-placeholder="Descrição"></span>
+                    </div>
+                    <div class="wrap-input50 validate-input">
+                        <input class="input100" type="number" name="prec">
+                        <span class="focus-input100" data-placeholder="Preço"></span>
+                    </div>
+                    <div class="wrap-input50 validate-input" style="margin-left: 4%;">
+                        <input class="input100" type="number" name="desc">
+                        <span class="focus-input100" data-placeholder="Desconto"></span>
+                    </div>
+                    <div class="clear"></div>
+
+                    <button>EDITAR</button>
                 </form>
             </div>
         </div>

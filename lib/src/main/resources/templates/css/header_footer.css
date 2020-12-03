@@ -42,6 +42,10 @@ body {
 
 #parte_meio {
     background-color: rgb(108,99,255);
+    background: -webkit-linear-gradient(right, rgb(108,99,255), rgb(89, 86, 131));
+    background: -o-linear-gradient(right, rgb(108,99,255), rgb(89, 86, 131));
+    background: -moz-linear-gradient(right, rgb(108,99,255), rgb(89, 86, 131));
+    background: linear-gradient(right, rgb(108,99,255), rgb(89, 86, 131));
     padding-top: 2px;
 }
 
@@ -97,6 +101,10 @@ textarea:focus, input:focus, select:focus {
     height: 30px;
     width: 100%;
     background-color: rgb(108,99,255);
+    background: -webkit-linear-gradient(right, rgb(108,99,255), rgb(89, 86, 131));
+    background: -o-linear-gradient(right, rgb(108,99,255), rgb(89, 86, 131));
+    background: -moz-linear-gradient(right, rgb(108,99,255), rgb(89, 86, 131));
+    background: linear-gradient(right, rgb(108,99,255), rgb(89, 86, 131));
     padding-top: 15px;
 }
 
