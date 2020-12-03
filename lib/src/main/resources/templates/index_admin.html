@@ -75,64 +75,18 @@
             </div>
         </div>
 
-        <div id="cursos">
+        <div id="cursos" th:each="curso : ${cursos}">
             <div class="produtos">
                 <div class="foto_produto">
                     <img src="images/produtos/roupas/7.jpg">
                 </div>
 
                 <div class="informacoes_produto">
-                    <h2>HALTER SEXTAVADO 2KG</h2>
+                    <h2 th:text="${curso.Nome}"></h2>
                     <p>A PARTIR DE</p>
-                    <h4 style="font-size: 18px;">R$ 74,99</h4>
-                    <p class="promocao">R$ 99,99</p>
-                    <button>EDITAR</button>
-                    <button>EXCLUIR</button>
-                </div>
-            </div>
-
-            <div class="produtos">
-                <div class="foto_produto">
-                    <img src="images/produtos/roupas/7.jpg">
-                </div>
-
-                <div class="informacoes_produto">
-                    <h2>HALTER SEXTAVADO 2KG</h2>
-                    <p>A PARTIR DE</p>
-                    <h4 style="font-size: 18px;">R$ 74,99</h4>
-                    <p class="promocao">R$ 99,99</p>
-                    <button>EDITAR</button>
-                    <button>EXCLUIR</button>
-                </div>
-            </div>
-
-            <div class="produtos">
-                <div class="foto_produto">
-                    <img src="images/produtos/roupas/7.jpg">
-                </div>
-
-                <div class="informacoes_produto">
-                    <h2>HALTER SEXTAVADO 2KG</h2>
-                    <p>A PARTIR DE</p>
-                    <h4 style="font-size: 18px;">R$ 74,99</h4>
-                    <p class="promocao">R$ 99,99</p>
-                    <button>EDITAR</button>
-                    <button>EXCLUIR</button>
-                </div>
-            </div>
-
-            <div class="produtos">
-                <div class="foto_produto">
-                    <img src="images/produtos/roupas/7.jpg">
-                </div>
-
-                <div class="informacoes_produto">
-                    <h2>HALTER SEXTAVADO 2KG</h2>
-                    <p>A PARTIR DE</p>
-                    <h4 style="font-size: 18px;">R$ 74,99</h4>
-                    <p class="promocao">R$ 99,99</p>
-                    <button>EDITAR</button>
-                    <button>EXCLUIR</button>
+                    <h4 th:text="${curso.ValorDesconto}" style="font-size: 18px;"></h4>
+                    <p th:text="${curso.Valor}" class="promocao"></p>
+                    <button>VER</button>
                 </div>
             </div>
 

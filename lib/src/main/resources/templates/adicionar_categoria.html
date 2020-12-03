@@ -86,9 +86,9 @@
 
         <div id="adicionar">
             <div id="informacao2">
-                <form class="login100-form validate-form">
+                <form class="login100-form validate-form" action="@{/categoria}" th:object="${categoria}">
                     <div class="wrap-input100 validate-input">
-                        <input class="input100" type="text" name="nome">
+                        <input th:field="*{Nome}" class="input100" type="text" name="nome">
                         <span class="focus-input100" data-placeholder="Nome"></span>
                     </div>
 

@@ -86,19 +86,16 @@
 
         <div id="adicionar">
             <div id="informacao2">
-                <form class="login100-form validate-form">
+                <form class="login100-form validate-form" action="@{/categoria}" th:object="${categoria}">
                     <div class="wrap-input100 validate-input">
-                        <select class="input100" name="drop" style="border: none;" data-placeholder="Categoria">
+                        <select class="input100" name="drop" style="border: none;" th:each="categoria : ${categorias}" data-placeholder="Categoria">
                             <option value="categoria">Categoria</option>
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="fiat">Fiat</option>
-                            <option value="audi">Audi</option>
+                            <option th:text="${categoria.Nome}" th:value="${categoria.Id}"></option>
                         </select>
                     </div>
 
                     <div class="wrap-input100 validate-input">
-                        <input class="input100" type="text" name="nome">
+                        <input class="input100" th:field="*{Nome}" type="text" name="nome">
                         <span class="focus-input100" data-placeholder="Nome"></span>
                     </div>
 
