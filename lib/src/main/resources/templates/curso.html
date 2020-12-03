@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,12 +38,11 @@
     </header>
 
     <div id="conteudo">
-        <div class="organizaçao">
+        <div class="organizaçao" th:each="curso : ${cursos}">
             <div id="fotao">
-                <p class="texto" style="font-weight: 600; margin-bottom: 10px;">Informática</p>
-                <h1 class="texto">Python para Android, iOS, Win, Linux e Mac - Desde o Básico</h1>
-                <p class="texto" style="font-size: 19px;">Desenvolvimento de Apps Comerciais com Python e Kivy para Android, iOS, Windows, Linux e MacOS (do Básico ao Avançado)</p>
-                <p class="texto" style="margin-top: 10px;">Criado por Verônica</p>
+                <p class="texto" style="font-weight: 600; margin-bottom: 10px;" th:text="${curso.Categoria.Nome}"></p>
+                <h1 class="texto" th:text="${curso.Nome}"></h1>
+                <p class="texto" th:text="${curso.Descricao}" style="font-size: 19px;"></p>
             </div>
 
             <div id="informacoes_produto">
@@ -56,11 +55,11 @@
                         <p>Promoção</p>
                     </div>
 
-                    <h1>R$ 22,90</h1>
-                    <p id="preco_antigo">R$ 250,99</p>
+                    <h1 th:text="${curso.ValorDesconto}"></h1>
+                    <p th:text="${curso.Valor}" id="preco_antigo"></p>
 
                     <div class="clear"></div>
-                    <p id="desconto">94% de desconto</p>
+                    <p th:text="${curso.Desconto}" id="desconto"></p>
 
                     <button id="carrinho">Adicionar ao carrinho</button>
                     <button style="border: 1px solid rgb(108,99,255); color: rgb(108,99,255); background-color: white;">Comprar</button>
