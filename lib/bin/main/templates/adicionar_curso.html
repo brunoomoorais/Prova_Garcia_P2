@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Curso</title>
+    <link rel="stylesheet" type="text/css" href="css/adicionar.css"/>
+    <link rel="stylesheet" type="text/css" href="css/header_footer.css"/>
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css"/>
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css"/>
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css"/>
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css"/>
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"/>	
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css"/>
+</head>
+<body>
+    <header>
+        <div id="parte_meio">
+            <div class="centralizar">
+                <div id="logo"></div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </header>
+    
+    <div id="conteudo"> 
+        <div id="parte_menu">
+            <div id="nome">
+                <p>Bem Vinda Verônica</p>
+            </div>
+
+            <hr> 
+
+            <div class="menu">
+                <div class="img">
+                    <img src="images/icons/eye-3-24.png">
+                </div>
+                <a href="index_admin.html">Visualizar Cursos</a>
+
+                <div class="clear"></div>
+            </div>
+
+            <div class="menu">
+                <div class="img">
+                    <img src="images/icons/eye-3-24.png">
+                </div>
+                <a href="visualizar_categoria.html">Visualizar Categorias</a>
+
+                <div class="clear"></div>
+            </div>
+
+            <div class="menu">
+                <div class="img">
+                    <img src="images/icons/add-24.png">
+                </div>
+                <a href="adicionar_curso.html">Adicionar Cursos</a>
+
+                <div class="clear"></div>
+            </div>          
+        
+            <div class="menu">
+                <div class="img">
+                    <img src="images/icons/add-24.png">
+                </div>
+                <a href="adicionar_categoria.html">Adicionar Categoria</a>
+
+                <div class="clear"></div>
+            </div>
+
+            <div class="menu">
+                <div class="img">
+                    <img src="images/icons/arrow-92-24.png">
+                </div>
+                <a>Sair</a>
+
+                <div class="clear"></div>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div id="adicionar">
+            <div id="foto">
+
+            </div>
+
+            <div id="informacao">
+                <form class="login100-form validate-form" action="@{/cursos}" th:object="${cursos}">
+                    <div class="wrap-input50 validate-input">
+                        <input class="input100" th:field="*{Nome}" type="text" name="nome">
+                        <span class="focus-input100" data-placeholder="Nome"></span>
+                    </div>
+                    <div class="wrap-input50 validate-input" style="margin-left: 4%;">
+                        <select class="input100" name="drop" style="border: none;" th:each="categoria : ${categorias}" data-placeholder="Categoria">
+                            <option value="categoria">Categoria</option>
+                            <option th:text="${categoria.Nome}" th:value="${categoria.Id}"></option>
+                        </select>
+                    </div>
+
+                    <div class="clear"></div>
+
+                    <div class="wrap-input100 validate-input">
+                        <textarea class="input100" th:field="*{Descricao}" style="padding-top: 10px; height: 100px;" name="desc"></textarea>
+                        <span class="focus-input100" data-placeholder="Descrição"></span>
+                    </div>
+                    <div class="wrap-input50 validate-input">
+                        <input class="input100" th:field="*{Valor}" type="number" name="prec">
+                        <span class="focus-input100" data-placeholder="Preço"></span>
+                    </div>
+                    <div class="wrap-input50 validate-input" style="margin-left: 4%;">
+                        <input class="input100" type="number" th:field="*{ValorDesconto}" name="desc">
+                        <span class="focus-input100" data-placeholder="Desconto"></span>
+                    </div>
+                    <div class="clear"></div>
+
+                    <button>ADICIONAR</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+    
+    <footer>
+        <div id="parte_azul">
+            <div id="parte_branca"></div>
+        </div>
+
+        <div id="parte_inferior">
+            <div class="final">
+                <p>Acme</p>
+            </div>
+
+            <div class="final">
+                <img src="images/logo/logo1.png">
+            </div>
+
+            <div class="final">
+                <p>Todos os direitos reservados</p>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </footer>
+
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <script src="js/main.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
+</body>
+</html>

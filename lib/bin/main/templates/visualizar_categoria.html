@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Categorias</title>
+    <link rel="stylesheet" type="text/css" href="css/style_admin.css"/>
+    <link rel="stylesheet" type="text/css" href="css/header_footer.css"/>
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+
+    <style>
+        .produtos {
+            padding: 8px 0 13px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="parte_meio">
+            <div class="centralizar">
+                <div id="logo"></div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </header>
+    
+    <div id="conteudo"> 
+        <div id="parte_menu">
+            <div id="nome">
+                <p>Bem Vinda Verônica</p>
+            </div>
+
+            <hr> 
+
+            <div class="menu">
+                <div class="img">
+                    <img src="images/icons/eye-3-24.png">
+                </div>
+                <a href="index_admin.html">Visualizar Cursos</a>
+
+                <div class="clear"></div>
+            </div>
+
+            <div class="menu">
+                <div class="img">
+                    <img src="images/icons/eye-3-24.png">
+                </div>
+                <a href="visualizar_categoria.html">Visualizar Categorias</a>
+
+                <div class="clear"></div>
+            </div>
+
+            <div class="menu">
+                <div class="img">
+                    <img src="images/icons/add-24.png">
+                </div>
+                <a href="adicionar_curso.html">Adicionar Cursos</a>
+
+                <div class="clear"></div>
+            </div>          
+        
+            <div class="menu">
+                <div class="img">
+                    <img src="images/icons/add-24.png">
+                </div>
+                <a href="adicionar_categoria.html">Adicionar Categorias</a>
+
+                <div class="clear"></div>
+            </div>
+
+            <div class="menu">
+                <div class="img">
+                    <img src="images/icons/arrow-92-24.png">
+                </div>
+                <a>Sair</a>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div id="cursos" th:each="categoria : ${categorias}">
+            <div class="produtos">
+                <div class="informacoes_produto">
+                    <h2 th:text="${curso.Nome}"></h2>
+                    <button>EDITAR</button>
+                    <button>EXCLUIR</button>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+    <footer>
+        <div id="parte_azul">
+            <div id="parte_branca"></div>
+        </div>
+
+        <div id="parte_inferior">
+            <div class="final">
+                <p>Acme</p>
+            </div>
+
+            <div class="final">
+                <img src="images/logo/logo1.png">
+            </div>
+
+            <div class="final">
+                <p>Todos os direitos reservados</p>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </footer>
+</body>
+</html>

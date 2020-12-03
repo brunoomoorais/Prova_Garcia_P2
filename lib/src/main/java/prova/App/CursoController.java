@@ -75,7 +75,7 @@ public class CursoController
 		CursoService cursoDao = context.getBean(CursoService.class);
 		List<Map<String, Object>> cursos = cursoDao.getAllFiltered(categoria, valor, desconto);
 		model.addAttribute("cursos", cursos);
-		return "produtosSucesso";
+		return "cursos";
 	}
 	
 	@GetMapping("/curso/{id}/update")
@@ -106,7 +106,7 @@ public class CursoController
 	{
 		CursoService cursoDao = context.getBean(CursoService.class);
 		cursoDao.update(id, curso);
-		return "redirect:/rotaDasCategorias";
+		return "redirect:/cursos";
 	}
 	
 	@PostMapping("/curso/{id}/delete")
@@ -114,6 +114,6 @@ public class CursoController
 	{
 		CursoService cursoDao = context.getBean(CursoService.class);
 		cursoDao.delete(id);
-		return "formDelete";
+		return "redirect:/cursos";
 	}
 }
