@@ -36,14 +36,14 @@ public class CursoDAO extends JdbcDaoSupport{
 		}
 		
 		public Map<String, Object> getCurso(int id){
-			String sql = "select id, nome, descricao, categoria_id, valor, (valor - (valor * desconto / 100)) as valorDesc, desconto"
+			String sql = "select id, nome, descricao, categoria_id, (valor - (valor * desconto / 100) + (valor * desconto / 100)) as valorAtual, (valor - (valor * desconto / 100)) as valorDesc, desconto"
 						+" from curso"
 						+" WHERE id = ?;";
 			return getJdbcTemplate().queryForMap(sql, new Object[] {id});
 		}
 		
 		public List<Map<String, Object>> getCursos(){
-			String sql = "select id, nome, descricao, categoria_id, valor, (valor - (valor * desconto / 100)) as valorDesc, desconto"
+			String sql = "select id, nome, descricao, categoria_id, (valor - (valor * desconto / 100) + (valor * desconto / 100)) as valorAtual, (valor - (valor * desconto / 100)) as valorDesc, desconto"
 						+" from curso"
 						+" order by nome;";
 			return (List<Map<String, Object>>) getJdbcTemplate().queryForList(sql); 
@@ -51,7 +51,7 @@ public class CursoDAO extends JdbcDaoSupport{
 		
 		public List<Map<String, Object>> getCursosFilter(int categoriaId, double valor, int desconto){
 			List<Object> parameters = new ArrayList<Object>();
-			String sql = "select id, nome, descricao, categoria_id, valor, (valor - (valor * desconto / 100)) as valorDesc, desconto\r\n"
+			String sql = "select id, nome, descricao, categoria_id, (valor - (valor * desconto / 100) + (valor * desconto / 100)) as valorAtual, (valor - (valor * desconto / 100)) as valorDesc, desconto"
 						+" from curso WHERE";
 			if(categoriaId > -1)
 			{
@@ -88,7 +88,7 @@ public class CursoDAO extends JdbcDaoSupport{
 						+"SET nome = ?,"
 						+"    descricao = ?,"
 						+ "	  categoria_id = ?,"
-						+"    valor = CAST(? as MONEY),"
+						+"    valor = CAST(? as REAL),"
 						+"    desconto = ?"
 						+"WHERE id = ?;";
 			getJdbcTemplate().update(sql, new Object[] {

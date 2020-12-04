@@ -35,7 +35,7 @@ public class CursoController
 		return "cursoSucesso";
 	}
 	
-	@GetMapping("/curso/{id}")
+	@GetMapping("/curso/desc/{id}")
 	public String getCurso(@PathVariable("id") int id, Model model)
 	{
 		CursoService cursoDao = context.getBean(CursoService.class);
@@ -49,12 +49,12 @@ public class CursoController
 													(int)categoria.get("id"),
 													(String)categoria.get("nome")
 												 ),
-									(double)curso.get("valor"),
-									(double)curso.get("valorDesconto"),
+									(double)curso.get("valorAtual"),
+									(double)curso.get("valorDesc"),
 									(int)curso.get("desconto")
 								);
 		model.addAttribute("curso", ResultCurso);
-		return "produtosSucesso";
+		return "curso";
 	}
 	
 	@GetMapping("/cursos")
@@ -66,7 +66,7 @@ public class CursoController
 		return "produtosSucesso";
 	}
 	
-	@GetMapping("/cursos")
+	@GetMapping("/cursosFiltered")
 	public String getCursosFilter(@RequestParam(name = "categoria", required = true, defaultValue = "-1") int categoria,
 								  @RequestParam(name = "valor", required = true, defaultValue = "-1") double valor,
 								  @RequestParam(name = "desconto", required = true, defaultValue = "-1") int desconto,
@@ -92,8 +92,8 @@ public class CursoController
 													(int)categoria.get("id"),
 													(String)categoria.get("nome")
 												  ),
-									(double)curso.get("valor"),
-									(double)curso.get("valorDesconto"),
+									(Float)curso.get("valorAtual"),
+									(Float)curso.get("valorDesconto"),
 									(int)curso.get("desconto")
 								);
 		model.addAttribute("curso", ResultCurso);	

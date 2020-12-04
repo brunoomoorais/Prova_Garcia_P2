@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curso</title>
-    <link rel="stylesheet" type="text/css" href="css/curso.css"/>
-    <link rel="stylesheet" type="text/css" href="css/header_footer.css"/>
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link th:rel="stylesheet" th:href="@{/curso.css}">
+    <link rel="stylesheet" href="@.header_footer.css">
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico">
 </head>
 <body>
     <header>
@@ -38,10 +38,10 @@
     </header>
 
     <div id="conteudo">
-        <div class="organizaçao" th:each="curso : ${cursos}">
+        <div class="organizaçao">
             <div id="fotao">
                 <p class="texto" style="font-weight: 600; margin-bottom: 10px;" th:text="${curso.Categoria.Nome}"></p>
-                <h1 class="texto" th:text="${curso.Nome}"></h1>
+                
                 <p class="texto" th:text="${curso.Descricao}" style="font-size: 19px;"></p>
             </div>
 
@@ -55,9 +55,9 @@
                         <p>Promoção</p>
                     </div>
 
-                    <h1 th:text="${curso.ValorDesconto}"></h1>
-                    <p th:text="${curso.Valor}" id="preco_antigo"></p>
-
+                     <h1 th:text="${curso.ValorDesconto}"></h1>
+                     <p th:text="${curso.Valor}" id="preco_antigo"></p>
+		
                     <div class="clear"></div>
                     <p th:text="${curso.Desconto}" id="desconto"></p>
 

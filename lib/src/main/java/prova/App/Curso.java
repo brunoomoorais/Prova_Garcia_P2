@@ -6,7 +6,7 @@ public class Curso {
 	private String Nome;
 	private String Descricao;
 	private Categoria Categoria;
-	private double ValorAtual;
+	private double Valor;
 	private double ValorDesconto;
 	private int Desconto;
 	
@@ -14,23 +14,23 @@ public class Curso {
 		
 	}
 	
-	public Curso(String nome, String desc, Categoria categoria, double valor, double valorDesc, int desconto)
+	public Curso(String nome, String desc, Categoria categoria, double valorAtu, double valorDesc, int desconto)
 	{
 		this.Nome = nome;
 		this.Descricao = desc;
 		this.Categoria = categoria;
-		this.ValorAtual = valor;
+		this.Valor = valorAtu;
 		this.ValorDesconto = valorDesc;
 		this.Desconto = desconto;		
 	}
 	
-	public Curso(int id, String nome, String desc, Categoria categoria, double valor, double valorDesc, int desconto)
+	public Curso(int id, String nome, String desc, Categoria categoria, double valorAtu, double valorDesc, int desconto)
 	{
 		this.Id = id;
 		this.Nome = nome;
 		this.Descricao = desc;
 		this.Categoria = categoria;
-		this.ValorAtual = valor;
+		this.Valor = valorAtu;
 		this.ValorDesconto = valorDesc;
 		this.Desconto = desconto;		
 	}
@@ -43,7 +43,7 @@ public class Curso {
 	
 	public Categoria getCategoria() {return Categoria;}
 	
-	public double getValor() {return ValorAtual;}
+	public double getValor() {return this.Valor;}
 	
 	public double getValorDesconto() {return ValorDesconto;}
 	

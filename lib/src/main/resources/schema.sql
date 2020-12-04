@@ -19,4 +19,24 @@ CREATE TABLE IF NOT EXISTS Curso
     CONSTRAINT pk_curso PRIMARY KEY (id),
     CONSTRAINT fk_curso_categoria foreign key (categoria_id)
         REFERENCES categoria(id)
+);
+
+
+CREATE TABLE IF NOT EXISTS TipoUsuario
+(
+    id int not null,
+    nome varchar(20) not null,
+
+    constraint pk_tipo primary key (id)
+);
+
+CREATE TABLE IF NOT EXISTS Usuario
+(
+    Login VARCHAR(50) not null,
+    Senha varchar(50) not null,
+    TipoUsuarioId int not null,
+
+    constraint pk_usuario primary key (login),
+    constraint fk_usuario foreign key (TipoUsuarioId)
+        references TipoUsuario(id)
 )
