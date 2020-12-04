@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizar Cursos</title>
-    <link rel="stylesheet" type="text/css" href="css/style_admin.css"/>
-    <link rel="stylesheet" type="text/css" href="css/header_footer.css"/>
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style_admin.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header_footer.css}"/>
+    <link rel="icon" type="image/png" th:href="@{/images/icons/favicon.ico}"/>
 </head>
 <body>
     <header>
@@ -86,7 +86,12 @@
                     <p>A PARTIR DE</p>
                     <h4 th:text="${curso.ValorDesconto}" style="font-size: 18px;"></h4>
                     <p th:text="${curso.Valor}" class="promocao"></p>
-                    <button>VER</button>
+                    <form action="@{/cursos}" th:object="${curso}">
+                        <button>EDITAR</button>
+                    </form>
+                    <form action="@{/cursos}" th:object="${curso}">
+                        <button>EXCLUIR</button>
+                    </form>
                 </div>
             </div>
 

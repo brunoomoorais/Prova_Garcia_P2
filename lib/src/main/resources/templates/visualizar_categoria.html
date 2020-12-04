@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizar Categorias</title>
-    <link rel="stylesheet" type="text/css" href="css/style_admin.css"/>
-    <link rel="stylesheet" type="text/css" href="css/header_footer.css"/>
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style_admin.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header_footer.css}"/>
+    <link rel="icon" type="image/png" th:href="@{/images/icons/favicon.ico}"/>
 
     <style>
         .produtos {
@@ -85,8 +85,12 @@
             <div class="produtos">
                 <div class="informacoes_produto">
                     <h2 th:text="${curso.Nome}"></h2>
-                    <button>EDITAR</button>
-                    <button>EXCLUIR</button>
+                    <form action="@{/categoria}" th:object="${categoria}">
+                        <button>EDITAR</button>
+                    </form>
+                    <form action="@{/categoria}" th:object="${categoria}">
+                        <button>EXCLUIR</button>
+                    </form>
                 </div>
             </div>
             <div class="clear"></div>
