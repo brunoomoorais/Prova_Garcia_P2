@@ -11,7 +11,7 @@ public class UsuarioService {
 	@Autowired
 	UsuarioDAO uDao;
 		
-	public Map<String, Object> getId(String login, String senha){
+	public String getId(String login, String senha){
 		return uDao.getLogin(login, senha);
 	}	
 }

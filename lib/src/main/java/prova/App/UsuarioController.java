@@ -20,10 +20,8 @@ public class UsuarioController
 	public String AutenticUser(@ModelAttribute Usuario usuario, Model model)
 	{
 		UsuarioService udao = context.getBean(UsuarioService.class);
-		Map<String, Object> result = udao.getId(usuario.getLogin(), usuario.getSenha());
-		if(result.isEmpty()) return "redirect:/";
-		if(result == null) return "redirect:/";
-		String tipoUsuario = (String)result.get("tipoUsuarioId");
+		String tipoUsuario = udao.getId(usuario.getLogin(), usuario.getSenha());
+		
 		switch(tipoUsuario)
 		{
 			case "1":

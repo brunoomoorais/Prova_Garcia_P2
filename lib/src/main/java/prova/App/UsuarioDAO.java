@@ -19,9 +19,10 @@ public class UsuarioDAO extends JdbcDaoSupport{
 			setDataSource(dataSource);
 		}
 		
-		public Map<String, Object> getLogin(String login, String senha)
+		public String getLogin(String login, String senha)
 		{
-			String sql = "SELECT CAST(TipoUsuarioId as varchar) FROM usuario WHERE login = ? and senha = ?";
-			return getJdbcTemplate().queryForMap(sql, new Object[] {login, senha});
+			String sql = "select verifyFunc(?, ?) as tipoUsuarioId";
+			
+			return (String)getJdbcTemplate().queryForMap(sql, new Object[] {login, senha}).get("tipoUsuarioId");
 		}
 }
