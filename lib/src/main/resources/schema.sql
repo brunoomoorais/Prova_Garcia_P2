@@ -1,14 +1,12 @@
 CREATE TABLE IF NOT EXISTS categoria
 (
-    id INT not null,
-    nome VARCHAR(50) NOT NULL,
-
-    CONSTRAINT pk_categoria PRIMARY KEY (id)
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,   
 );
 
 CREATE TABLE IF NOT EXISTS Curso
 (
-    id INT NOT NULL,
+    id SERIAL PRIMARY KEY,
     nome varchar(50) NOT NULL,
     descricao VARCHAR(100) NOT NULL,
     categoria_id INT NOT NULL,
