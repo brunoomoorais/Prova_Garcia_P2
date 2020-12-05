@@ -86,7 +86,7 @@ public class CursoController
 	
 	@GetMapping("/cursos/cliente/filtered")
 	public String getCursosFilter(@RequestParam(name = "categoria", required = true, defaultValue = "-1") int categoria,
-								  @RequestParam(name = "valor", required = true, defaultValue = "-1") double valor,
+								  @RequestParam(name = "valor", required = false, defaultValue = "-1") double valor,
 								  @RequestParam(name = "desconto", required = true, defaultValue = "-1") int desconto,
 								  Model model)
 	{

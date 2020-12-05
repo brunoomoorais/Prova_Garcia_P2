@@ -44,14 +44,15 @@ public class CursoDAO extends JdbcDaoSupport{
 		
 		public List<Map<String, Object>> getCursosFilter(int categoriaId, double valor, int desconto){			
 			String sql = "select id, nome, descricao, categoria_id, (valor - (valor * desconto / 100) + (valor * desconto / 100)) as valorAtual, (valor - (valor * desconto / 100)) as valorDesc, desconto"
-						+" from curso WHERE";
+						+" from curso";
 			int count = 0;
 			int countObject = 0;
 			
 			if(categoriaId > -1) countObject++;
 			if(valor > 0) countObject++;
 			if(desconto > -1) countObject++;
-			
+			if(countObject != 0)
+				sql += " WHERE";
 			Object[] parameters = new Object[countObject];
 			
 			if(categoriaId > -1)
@@ -78,7 +79,8 @@ public class CursoDAO extends JdbcDaoSupport{
 			
 			Object[] newParameters = (Object[]) parameters;
 			
-			sql += " order by nome;";
+			if(count != 0)
+				sql += " order by nome;";
 			
 			return (List<Map<String, Object>>) getJdbcTemplate().queryForList(sql, parameters); 
 		}

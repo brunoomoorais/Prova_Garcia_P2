@@ -113,3 +113,7 @@
 .promocao {
     text-decoration: line-through rgb(102, 102, 102);
 }
+
+button:hover {
+	cursor:pointer;
+}
