@@ -61,8 +61,8 @@
                     <div class="clear"></div>
                     <p th:text="'Desconto de ' + ${curso.Desconto} + '%'" id="desconto"></p>
 
-                    <button id="carrinho">Adicionar ao carrinho</button>
-                    <button style="border: 1px solid rgb(108,99,255); color: rgb(108,99,255); background-color: white;">Comprar</button>
+                    <button id="carrinho">ADICIONAR AO CARRINHO</button>
+                    <button style="border: 1px solid rgb(108,99,255); color: rgb(108,99,255); background-color: white;">COMPRAR</button>
                     
                     <p style="font-size: 12px; color: rgb(102, 102, 102); text-align: center; margin-top: 12px;">Garantia de devolução do dinheiro em 30 dias</p>
                 </div>
@@ -85,7 +85,7 @@
             </div>
 
             <div class="final">
-                <img src="images/logo/logo1.png">
+                <img th:src="@{images/logo/logo1.png}">
             </div>
 
             <div class="final">
