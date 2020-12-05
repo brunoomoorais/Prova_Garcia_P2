@@ -69,20 +69,21 @@ h1 {
 
 button {
     width: 85%;
-    height: 50px;
+    height: 48px;
     margin: 5px 7.5%;
     border: none;
     font-size: 16px;
     font-weight: 600;
-    padding-top: 1px;
+    padding-top: 4px;
+    border-radius: 5px;
 }
 
 #carrinho {
-    background-color: rgb(108,99,255); 
+    background-color: rgb(108,99,255);
+    background: -webkit-linear-gradient(right, rgb(108,99,255), rgb(89, 86, 131));
+    background: -o-linear-gradient(right, rgb(108,99,255), rgb(89, 86, 131));
+    background: -moz-linear-gradient(right, rgb(108,99,255), rgb(89, 86, 131));
+    background: linear-gradient(right, rgb(108,99,255), rgb(89, 86, 131));
     color: white;
-}
-
-#carrinho:hover {
-    background-color: rgb(66, 56, 255);
 }
 

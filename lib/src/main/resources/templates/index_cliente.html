@@ -69,6 +69,10 @@
                 <select id="drop" name="drop" th:each="categoria : ${categorias}">
                     <option th:text="${categoria.Nome}" th:value="${categoria.Id}"></option>
                 </select>
+
+                <form action="@{/cursos}" th:object="${curso}">
+                    <button>FILTRAR</button>
+                </form>
             </div>
 
             <div id="fotos" th:each="curso : ${cursos}">
@@ -82,7 +86,9 @@
                         <p>A PARTIR DE</p>
                         <h4 th:text="${curso.ValorDesconto}" style="font-size: 18px;"></h4>
                         <p th:text="${curso.Valor}" class="promocao"></p>
-                        <button>VER</button>
+                        <form action="@{/cursos}" th:object="${curso}">
+                            <button>VER</button>
+                        </form>
                     </div>
                 </div>
 
