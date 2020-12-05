@@ -11,7 +11,7 @@ public class CursoService {
 	@Autowired
 	CursoDAO cDao;
 	
-	public void insert(Curso curso) {
+	public void insert(CursoUpdate curso) {
 		cDao.insert(curso);
 	}
 	
@@ -31,7 +31,7 @@ public class CursoService {
 		cDao.deleteCurso(id);
 	}
 	
-	public void update(int id, Curso curso) {
+	public void update(int id, CursoUpdate curso) {
 		cDao.updateCurso(id, curso);
 	}
 }

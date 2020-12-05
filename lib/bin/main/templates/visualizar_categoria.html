@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizar Categorias</title>
-    <link rel="stylesheet" type="text/css" href="css/style_admin.css"/>
-    <link rel="stylesheet" type="text/css" href="css/header_footer.css"/>
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style_admin.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header_footer.css}"/>
+    <link rel="icon" type="image/png" th:href="@{/images/icons/favicon.ico}"/>
 
     <style>
         .produtos {
@@ -18,7 +18,7 @@
     <header>
         <div id="parte_meio">
             <div class="centralizar">
-                <div id="logo"></div>
+                <a th:href="@{/cursos/admin}"><div id="logo"></div></a>
 
                 <div class="clear"></div>
             </div>
@@ -39,7 +39,7 @@
                 <div class="img">
                     <img src="images/icons/eye-3-24.png">
                 </div>
-                <a href="index_admin.html">Visualizar Cursos</a>
+                <a th:href="@{/cursos/admin}">Visualizar Cursos</a>
 
                 <div class="clear"></div>
             </div>
@@ -48,7 +48,7 @@
                 <div class="img">
                     <img src="images/icons/eye-3-24.png">
                 </div>
-                <a href="visualizar_categoria.html">Visualizar Categorias</a>
+                <a th:href="@{/categorias}">Visualizar Categorias</a>
 
                 <div class="clear"></div>
             </div>
@@ -57,7 +57,7 @@
                 <div class="img">
                     <img src="images/icons/add-24.png">
                 </div>
-                <a href="adicionar_curso.html">Adicionar Cursos</a>
+                <a th:href="@{/cursos/insert}">Adicionar Cursos</a>
 
                 <div class="clear"></div>
             </div>          
@@ -66,7 +66,7 @@
                 <div class="img">
                     <img src="images/icons/add-24.png">
                 </div>
-                <a href="adicionar_categoria.html">Adicionar Categorias</a>
+                <a th:href="@{/categorias/insert}">Adicionar Categorias</a>
 
                 <div class="clear"></div>
             </div>
@@ -81,12 +81,14 @@
             </div>
         </div>
 
-        <div id="cursos" th:each="categoria : ${categorias}">
-            <div class="produtos">
+        <div id="cursos">
+            <div class="produtos" th:each="categoria : ${categoriasObject}">
                 <div class="informacoes_produto">
-                    <h2 th:text="${curso.Nome}"></h2>
-                    <button>EDITAR</button>
-                    <button>EXCLUIR</button>
+                    <h2 th:text="${categoria.nome}"></h2>	                    
+                       <a th:href="@{'/categorias/' + ${categoria.id} + '/update'}"><button>EDITAR</button></a>
+                    <form th:action="@{'/categorias/' + ${categoria.id} + '/delete'}" method="post">
+                        <button>EXCLUIR</button>
+                    </form>
                 </div>
             </div>
             <div class="clear"></div>

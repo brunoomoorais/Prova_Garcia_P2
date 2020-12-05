@@ -19,30 +19,37 @@ public class CursoController
 	@Autowired
 	private ApplicationContext context;
 	
-	@GetMapping("/curso")
+	@GetMapping("/cursos/insert")
 	public String cadastrar(Model model)
 	{		
-		model.addAttribute("curso", new Curso());
-		return "form";
+		CategoriaService catDao = context.getBean(CategoriaService.class);
+		model.addAttribute("categoriasObject", catDao.getAll());
+		model.addAttribute("cursoObject", new CursoUpdate());
+		return "adicionar_curso";
 	}
 	
-	@PostMapping("/curso")
-	public String postCurso(@ModelAttribute Curso curso, Model model)
+	@PostMapping("/cursos/insert")
+	public String postCurso(@ModelAttribute CursoUpdate curso, Model model)
 	{
-		model.addAttribute("curso", curso);
 		CursoService cdao = context.getBean(CursoService.class);
 		cdao.insert(curso);
-		return "cursoSucesso";
+		return "redirect:/cursos/admin";
 	}
 	
-	@GetMapping("/curso/desc/{id}")
+	@GetMapping("/cursos/desc/{id}")
 	public String getCurso(@PathVariable("id") int id, Model model)
 	{
 		CursoService cursoDao = context.getBean(CursoService.class);
 		CategoriaService catDao = context.getBean(CategoriaService.class);
 		Map<String, Object> curso = cursoDao.getId(id);
+		/*if(curso == null)
+		{
+			model.addAttribute("result", "/cursos/desc/{id}");
+			return "error";
+		}*/
 		Map<String, Object> categoria = catDao.getId((int)curso.get("categoria_id"));
 		Curso ResultCurso = new Curso(
+									(int)curso.get("id"),
 									(String)curso.get("nome"),
 									(String)curso.get("descricao"),
 									new Categoria(
@@ -57,63 +64,80 @@ public class CursoController
 		return "curso";
 	}
 	
-	@GetMapping("/cursos")
-	public String getCursos(Model model)
+	@GetMapping("/cursos/admin")
+	public String getCursosAdmin(Model model)
 	{
 		CursoService cursoDao = context.getBean(CursoService.class);
 		List<Map<String, Object>> cursos = cursoDao.getAll();
 		model.addAttribute("cursos", cursos);
-		return "produtosSucesso";
+		return "index_admin";
 	}
 	
-	@GetMapping("/cursosFiltered")
+	@GetMapping("/cursos/cliente")
+	public String getCursosCliente(Model model)
+	{
+		CursoService cursoDao = context.getBean(CursoService.class);
+		CategoriaService catDao = context.getBean(CategoriaService.class);
+		List<Map<String, Object>> cursos = cursoDao.getAll();
+		model.addAttribute("cursos", cursos);
+		model.addAttribute("categorias", catDao.getAll());
+		return "index_cliente";
+	}
+	
+	@GetMapping("/cursos/cliente/filtered")
 	public String getCursosFilter(@RequestParam(name = "categoria", required = true, defaultValue = "-1") int categoria,
 								  @RequestParam(name = "valor", required = true, defaultValue = "-1") double valor,
 								  @RequestParam(name = "desconto", required = true, defaultValue = "-1") int desconto,
 								  Model model)
 	{
+		CategoriaService catDao = context.getBean(CategoriaService.class);
 		CursoService cursoDao = context.getBean(CursoService.class);
 		List<Map<String, Object>> cursos = cursoDao.getAllFiltered(categoria, valor, desconto);
 		model.addAttribute("cursos", cursos);
-		return "cursos";
+		model.addAttribute("categorias", catDao.getAll());
+		return "index_cliente";
 	}
 	
-	@GetMapping("/curso/{id}/update")
+	@GetMapping("/cursos/{id}/update")
 	public String UpdateForm(@PathVariable("id") int id, Model model)
 	{
 		CursoService cursoDao = context.getBean(CursoService.class);
 		CategoriaService catDao = context.getBean(CategoriaService.class);
 		Map<String, Object> curso = cursoDao.getId(id);
+		/*if(curso == null)
+		{
+			model.addAttribute("result", "/cursos/{id}/update");
+			return "error";
+		}*/
 		Map<String, Object> categoria = catDao.getId((int)curso.get("categoria_id"));
-		Curso ResultCurso = new Curso(
-									(String)curso.get("nome"),
-									(String)curso.get("descricao"),
-									new Categoria(
-													(int)categoria.get("id"),
-													(String)categoria.get("nome")
-												  ),
-									(Float)curso.get("valorAtual"),
-									(Float)curso.get("valorDesconto"),
-									(int)curso.get("desconto")
-								);
-		model.addAttribute("curso", ResultCurso);	
-		return "formAtt";
+		CursoUpdate ResultCurso = new CursoUpdate(
+										(String)curso.get("nome"),
+										(String)curso.get("descricao"),
+										(int)categoria.get("id"),
+										(double)curso.get("valorAtual"),
+										(int)curso.get("desconto")
+									);
+		model.addAttribute("cursoObject", ResultCurso);	
+		model.addAttribute("id", id);
+		model.addAttribute("categoriasObject", catDao.getAll());
+		return "editar_curso";
 	}
 		
 	
-	@PostMapping("/curso/{id}/update")
-	public String updateCurso(@PathVariable("id")int id, @ModelAttribute Curso curso, Model model)
+	@PostMapping("/cursos/{id}/update")
+	public String updateCurso(@PathVariable("id")int id, @ModelAttribute CursoUpdate curso, Model model)
 	{
+		model.addAttribute("cursoObject", curso);
 		CursoService cursoDao = context.getBean(CursoService.class);
 		cursoDao.update(id, curso);
-		return "redirect:/cursos";
+		return "redirect:/cursos/admin";
 	}
 	
-	@PostMapping("/curso/{id}/delete")
+	@PostMapping("/cursos/{id}/delete")
 	public String deleteCurso(@PathVariable("id") int id, Model model)
 	{
 		CursoService cursoDao = context.getBean(CursoService.class);
 		cursoDao.delete(id);
-		return "redirect:/cursos";
+		return "redirect:/cursos/admin";
 	}
 }

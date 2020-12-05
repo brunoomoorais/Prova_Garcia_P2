@@ -21,17 +21,10 @@ public class CursoDAO extends JdbcDaoSupport{
 			setDataSource(dataSource);
 		}
 		
-		public void insert(Curso curso) {
-			String sql = "do $$"
-						 + " declare"
-						 + "  cursoId integer := (select MAX(id) + 1 from curso);"
-					     + " begin"
-						 + "    insert into curso(id, nome, descricao, categoria_id, valor, desconto)"
-						 + "   values (cursoId, ?, ?, ?, ?, ?);"
-						 + "  Raise Notice '%', cursoId;"
-						 + " end $$";
+		public void insert(CursoUpdate curso) {
+			String sql = "INSERT INTO curso(nome, descricao, categoria_id, valor, desconto) VALUES(?, ?, ?, ?, ?)";
 			getJdbcTemplate().update(sql, new Object[] {
-					curso.getNome(), curso.getDescricao(), curso.getCategoria().getId(), curso.getValor(), curso.getDesconto()
+					curso.getNome(), curso.getDescricao(), curso.getCategoria(), curso.getValor(), curso.getDesconto()
 			});
 		}
 		
@@ -49,29 +42,41 @@ public class CursoDAO extends JdbcDaoSupport{
 			return (List<Map<String, Object>>) getJdbcTemplate().queryForList(sql); 
 		}
 		
-		public List<Map<String, Object>> getCursosFilter(int categoriaId, double valor, int desconto){
-			List<Object> parameters = new ArrayList<Object>();
+		public List<Map<String, Object>> getCursosFilter(int categoriaId, double valor, int desconto){			
 			String sql = "select id, nome, descricao, categoria_id, (valor - (valor * desconto / 100) + (valor * desconto / 100)) as valorAtual, (valor - (valor * desconto / 100)) as valorDesc, desconto"
 						+" from curso WHERE";
+			int count = 0;
+			int countObject = 0;
+			
+			if(categoriaId > -1) countObject++;
+			if(valor > 0) countObject++;
+			if(desconto > -1) countObject++;
+			
+			Object[] parameters = new Object[countObject];
+			
 			if(categoriaId > -1)
 			{
 				sql += " categoria_id = ?";
-				parameters.add(categoriaId);
+				parameters[count] = categoriaId;
+				count++;
 			}
 
 			if(valor > 0.00)
 			{
-				sql += " valor < cast(? as money)";
-				parameters.add(valor);
+				if(count > 0) sql += " AND";
+				sql += " (valor - (valor * desconto / 100)) < cast(? as real)";
+				parameters[count] = valor;
+				count++;
 			}
 			
 			if(desconto > -1)
 			{
-				if(desconto == 0)
-					sql += " desconto IS NULL";
-				else
-					sql += " desconto IS NOT NULL";
+				if(count > 0) sql += " AND";
+				sql += " 	desconto > ?";
+				parameters[count] = desconto;				
 			}
+			
+			Object[] newParameters = (Object[]) parameters;
 			
 			sql += " order by nome;";
 			
@@ -83,16 +88,16 @@ public class CursoDAO extends JdbcDaoSupport{
 			getJdbcTemplate().update(sql, new Object[] {id});
 		}
 		
-		public void updateCurso(int id, Curso curso) {
+		public void updateCurso(int id, CursoUpdate curso) {
 			String sql = "UPDATE curso"
-						+"SET nome = ?,"
-						+"    descricao = ?,"
-						+ "	  categoria_id = ?,"
-						+"    valor = CAST(? as REAL),"
-						+"    desconto = ?"
-						+"WHERE id = ?;";
+						+" SET nome = ?,"
+						+" descricao = ?,"
+						+ "categoria_id = ?,"
+						+" valor = CAST(? as REAL),"
+						+" desconto = ?"
+						+" WHERE id = ?;";
 			getJdbcTemplate().update(sql, new Object[] {
-					curso.getNome(), curso.getDescricao(), curso.getCategoria().getId(), curso.getValor(), curso.getDesconto(), id 
+					curso.getNome(), curso.getDescricao(), curso.getCategoria(), curso.getValor(), curso.getDesconto(), id 
 			});
 		}
 }

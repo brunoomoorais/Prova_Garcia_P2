@@ -21,14 +21,7 @@ public class CategoriaDAO extends JdbcDaoSupport{
 		}
 		
 		public void insert(Categoria cat) {
-			String sql = "do $$"
-						+"  declare"
-						+"    categoriaId integer := (select MAX(id) + 1 from categoria);"
-						+"begin"
-						+"    insert into categoria(id, nome)"
-						+"        values (categoriaId, ?);"
-						+"    Raise Notice '%', categoriaId;"
-						+"end $$;";
+			String sql = "INSERT INTO categoria(nome) VALUES(?)";
 			getJdbcTemplate().update(sql, new Object[] {
 					cat.getNome()
 			});
@@ -52,8 +45,8 @@ public class CategoriaDAO extends JdbcDaoSupport{
 		
 		public void updateCategoria(int id, Categoria categoria) {
 			String sql = "UPDATE categoria"
-						+"SET nome = ?"
-						+"WHERE id = ?;";
+						+" SET nome = ?"
+						+" WHERE id = ?;";
 			getJdbcTemplate().update(sql, new Object[] {
 					categoria.getNome(), id 
 			});

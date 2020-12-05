@@ -33,7 +33,7 @@
                 <div class="img">
                     <img src="images/icons/eye-3-24.png">
                 </div>
-                <a href="index_admin.html">Visualizar Cursos</a>
+                <a th:href="@{/cursos/admin}">Visualizar Cursos</a>
 
                 <div class="clear"></div>
             </div>
@@ -42,7 +42,7 @@
                 <div class="img">
                     <img src="images/icons/eye-3-24.png">
                 </div>
-                <a href="visualizar_categoria.html">Visualizar Categorias</a>
+                <a th:href="@{/categorias}">Visualizar Categorias</a>
 
                 <div class="clear"></div>
             </div>
@@ -51,7 +51,7 @@
                 <div class="img">
                     <img src="images/icons/add-24.png">
                 </div>
-                <a href="adicionar_curso.html">Adicionar Cursos</a>
+                <a th:href="@{/cursos/insert}">Adicionar Cursos</a>
 
                 <div class="clear"></div>
             </div>          
@@ -60,7 +60,7 @@
                 <div class="img">
                     <img src="images/icons/add-24.png">
                 </div>
-                <a href="adicionar_categoria.html">Adicionar Categorias</a>
+                <a th:href="@{/categorias/insert}">Adicionar Categorias</a>
 
                 <div class="clear"></div>
             </div>
@@ -75,28 +75,29 @@
             </div>
         </div>
 
-        <div id="cursos" th:each="curso : ${cursos}">
-            <div class="produtos">
-                <div class="foto_produto">
-                    <img src="images/produtos/roupas/7.jpg">
-                </div>
-
-                <div class="informacoes_produto">
-                    <h2 th:text="${curso.Nome}"></h2>
-                    <p>A PARTIR DE</p>
-                    <h4 th:text="${curso.ValorDesconto}" style="font-size: 18px;"></h4>
-                    <p th:text="${curso.Valor}" class="promocao"></p>
-                    <form action="@{/cursos}" th:object="${curso}">
-                        <button>EDITAR</button>
-                    </form>
-                    <form action="@{/cursos}" th:object="${curso}">
-                        <button>EXCLUIR</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="clear"></div>
+        <div id="cursos">
+            <a th:href="@{'/cursos/desc/' + ${cursoObject.Id}}" th:each="cursoObject : ${cursos}">
+            	<div class="produtos">
+	                <div class="foto_produto">
+	                    <img src="images/produtos/roupas/7.jpg">
+	                </div>
+	
+	                <div class="informacoes_produto">
+	                    <h2 th:text="${cursoObject.Nome}"></h2>
+	                    <p>A PARTIR DE</p>
+	                    <h4 th:text="${cursoObject.ValorDesc}" style="font-size: 18px;"></h4>
+	                    <p th:text="${cursoObject.ValorAtual}" class="promocao"></p>
+	                    <a th:href="@{'/cursos/' + ${cursoObject.Id} + '/update'}">
+	                        <button>EDITAR</button>
+	                    </a>
+	                    <form th:action="@{'/cursos/' + ${cursoObject.Id} + '/delete'}" method="post">
+	                        <button>EXCLUIR</button>
+	                    </form>
+	                </div>
+	            </div>
+            </a>
         </div>
+                    <div class="clear"></div>
     </div>
 
     <div class="clear"></div>
