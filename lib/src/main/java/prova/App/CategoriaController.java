@@ -18,23 +18,23 @@ public class CategoriaController
 	@Autowired
 	private ApplicationContext context;
 	
-	@GetMapping("/categoria")
+	@GetMapping("/categorias/insert")
 	public String cadastrar(Model model)
 	{		
-		model.addAttribute("cat", new Categoria());
-		return "form";
+		model.addAttribute("categoriaObject", new Categoria());
+		return "adicionar_categoria";
 	}
 	
-	@PostMapping("/categoria")
-	public String postCategoria(@ModelAttribute Categoria categoria, Model model)
+	@PostMapping("/categorias/insert")
+	public String postCategoria(@ModelAttribute Categoria categoriaObject, Model model)
 	{
-		model.addAttribute("cat", categoria);
+		model.addAttribute("cat", categoriaObject);
 		CategoriaService cdao = context.getBean(CategoriaService.class);
-		cdao.insert(categoria);
-		return "categoriaSucesso";
+		cdao.insert(categoriaObject);
+		return "redirect:/categorias";
 	}
 	
-	@GetMapping("/categoria/{id}")
+	@GetMapping("/categorias/desc/{id}")
 	public String getCategoria(@PathVariable("id") int id, Model model)
 	{
 		CategoriaService catDao = context.getBean(CategoriaService.class);
@@ -49,34 +49,35 @@ public class CategoriaController
 	{
 		CategoriaService catDao = context.getBean(CategoriaService.class);
 		List<Map<String, Object>> categorias = catDao.getAll();
-		model.addAttribute("variavel_pagina", categorias);
-		return "produtosSucesso";
+		model.addAttribute("categoriasObject", categorias);
+		return "visualizar_categoria";
 	}
 	
-	@GetMapping("/categoria/{id}/update")
+	@GetMapping("/categorias/{id}/update")
 	public String UpdateForm(@PathVariable("id") int id, Model model)
 	{
 		CategoriaService catDao = context.getBean(CategoriaService.class);
 		Map<String, Object> categoria = catDao.getId(id);
 		Categoria cat = new Categoria((int)categoria.get("id"), (String)categoria.get("nome"));
-		model.addAttribute("variavel_pagina", cat);	
-		return "formAtt";
+		model.addAttribute("categoriaObject", cat);
+		model.addAttribute("Id", id);
+		return "editar_categoria";
 	}
 		
 	
-	@PostMapping("/categoria/{id}/update")
-	public String postCategoria(@PathVariable("id")int id, @ModelAttribute Categoria categoria, Model model)
+	@PostMapping("/categorias/{id}/update")
+	public String postCategoria(@PathVariable("id")int id, @ModelAttribute Categoria categoriaObject, Model model)
 	{
 		CategoriaService catDao = context.getBean(CategoriaService.class);
-		catDao.update(id, categoria);
-		return "redirect:/rotaDasCategorias";
+		catDao.update(id, categoriaObject);
+		return "redirect:/categorias";
 	}
 	
-	@GetMapping("/categoria/{id}/delete")
+	@PostMapping("/categorias/{id}/delete")
 	public String deleteCategoria(@PathVariable("id") int id, Model model)
 	{
 		CategoriaService catDao = context.getBean(CategoriaService.class);
 		catDao.delete(id);
-		return "formDelete";
+		return "redirect:/categorias";
 	}
 }

@@ -66,8 +66,8 @@
 
                 <p style="font-weight: 600; margin-top: 15px;">- Categoria</p>
 
-                <select id="drop" name="drop" th:each="categoria : ${categorias}">
-                    <option th:text="${categoria.Nome}" th:value="${categoria.Id}"></option>
+                <select id="drop" name="CategoriaId" >
+                    <option th:each="categoria : ${categorias}" th:text="${categoria.Nome}" th:value="${categoria.Id}"></option>
                 </select>
 
                 <form action="@{/cursos}" th:object="${curso}">
@@ -75,6 +75,7 @@
                 </form>
             </div>
 
+<<<<<<< HEAD
             <div id="fotos" th:each="curso : ${cursos}">
                 <div class="produtos">
                     <div class="foto_produto">
@@ -92,6 +93,24 @@
                     </div>
                 </div>
 
+=======
+            <div id="fotos">
+            	<a th:href="@{'/cursos/desc/' + ${curso.Id}}" th:each="curso : ${cursos}">
+	                <div class="produtos">
+	                    <div class="foto_produto">
+	                        <img src="images/produtos/roupas/7.jpg">
+	                    </div>
+	
+	                    <div class="informacoes_produto">
+	                        <h2 th:text="${curso.Nome}"></h2>
+	                        <p>A PARTIR DE</p>
+	                        <h4 th:text="${curso.ValorDesc}" style="font-size: 18px;"></h4>
+	                        <p th:text="${curso.ValorAtual}" class="promocao"></p>
+	                        <button>VER</button>
+	                    </div>
+	                </div>
+                </a>
+>>>>>>> d287b20bb8b9642502dc1c24d76dcec16ad68685
                 <div class="clear"></div>
             </div>
 

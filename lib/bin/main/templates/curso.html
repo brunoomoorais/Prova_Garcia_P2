@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curso</title>
-    <link th:rel="stylesheet" th:href="@{/curso.css}">
-    <link rel="stylesheet" href="@.header_footer.css">
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico">
+    <link th:rel="stylesheet" th:href="@{/css/curso.css}">
+    <link rel="stylesheet" th:href="@{/css/header_footer.css}">
+    <link rel="icon" type="image/png" th:href="@{/images/icons/favicon.ico}">
 </head>
 <body>
     <header>
@@ -28,7 +28,7 @@
 
         <div id="parte_meio">
             <div class="centralizar">
-                <a href="index.html"><div id="logo"></div></a>
+                <a th:href="@{/cursos/cliente}"></a><div id="logo"></div>
 
                 <div class="clear"></div>
             </div>
