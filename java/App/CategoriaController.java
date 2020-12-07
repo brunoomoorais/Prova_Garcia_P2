@@ -34,16 +34,6 @@ public class CategoriaController
 		return "redirect:/categorias";
 	}
 	
-	@GetMapping("/categorias/desc/{id}")
-	public String getCategoria(@PathVariable("id") int id, Model model)
-	{
-		CategoriaService catDao = context.getBean(CategoriaService.class);
-		Map<String, Object> categoria = catDao.getId(id);
-		Categoria cat = new Categoria((int)categoria.get("id"), (String)categoria.get("nome"));
-		model.addAttribute("variavel_pagina", cat);
-		return "produtosSucesso";
-	}
-	
 	@GetMapping("/categorias")
 	public String getCategorias(Model model)
 	{
