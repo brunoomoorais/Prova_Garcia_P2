@@ -1,6 +1,5 @@
 package prova.App;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ public class UsuarioService {
 	@Autowired
 	UsuarioDAO uDao;
 		
-	public String getId(String login, String senha){
+	public Map<String, Object> getId(String login, String senha){
 		return uDao.getLogin(login, senha);
 	}	
 }

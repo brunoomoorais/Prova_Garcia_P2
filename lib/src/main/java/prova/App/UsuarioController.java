@@ -1,5 +1,7 @@
 package prova.App;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -18,9 +20,11 @@ public class UsuarioController
 	public String AutenticUser(@ModelAttribute Usuario usuario, Model model)
 	{
 		UsuarioService udao = context.getBean(UsuarioService.class);
-		String tipoUsuario = udao.getId(usuario.getLogin(), usuario.getSenha());
+		Map<String, Object> tipoUsuario = udao.getId(usuario.getLogin(), usuario.getSenha());
 		
-		switch(tipoUsuario)
+		String modoUser = (String)tipoUsuario.get("tipoUsuarioId");
+		
+		switch(modoUser)
 		{
 			case "1":
 				return "redirect:/cursos/admin";

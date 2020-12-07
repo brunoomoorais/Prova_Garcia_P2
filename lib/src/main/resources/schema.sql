@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS categoria
 (
     id SERIAL PRIMARY KEY,
-    nome VARCHAR(50) NOT NULL,   
+    nome VARCHAR(50) NOT NULL   
 );
 
 CREATE TABLE IF NOT EXISTS Curso
@@ -14,7 +14,6 @@ CREATE TABLE IF NOT EXISTS Curso
     desconto INT NOT NULL,
     details jsonb NULL,
 
-    CONSTRAINT pk_curso PRIMARY KEY (id),
     CONSTRAINT fk_curso_categoria foreign key (categoria_id)
         REFERENCES categoria(id)
 );
